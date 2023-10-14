@@ -7,13 +7,7 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Выберите действие:");
-            Console.WriteLine("1. Ввести матрицы A, B и C");
-            Console.WriteLine("2. Подсчитать количество элементов больших чем 3.15");
-            Console.WriteLine("3. Подсчитать количество элементов больших чем number и кратных multiple");
-            Console.WriteLine("4. Умножить матрицы");
-            Console.WriteLine("5. Сформировать массив сумм элементов строк");
-            Console.WriteLine("0. Выйти из программы");
+            DisplayMenu();
 
             Matrix A = null;
             Matrix B = null;
@@ -62,6 +56,7 @@ namespace ConsoleApp
                         Console.WriteLine("Матрица C успешно введена.");
                         Console.WriteLine("Введенная матрица C:");
                         C.OutputMatrix();
+                        DisplayMenu();
                         break;
 
                     case 2:
@@ -77,6 +72,7 @@ namespace ConsoleApp
                         Console.WriteLine($"Количество элементов матрицы A, больших чем 3.15: {countA}");
                         Console.WriteLine($"Количество элементов матрицы B, больших чем 3.15: {countB}");
                         Console.WriteLine($"Количество элементов матрицы C, больших чем 3.15: {countC}");
+                        DisplayMenu();
                         break;
 
                     case 3:
@@ -98,6 +94,7 @@ namespace ConsoleApp
                         Console.WriteLine($"Количество элементов матрицы A, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanA}");
                         Console.WriteLine($"Количество элементов матрицы B, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanB}");
                         Console.WriteLine($"Количество элементов матрицы C, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanC}");
+                        DisplayMenu();
                         break;
 
                     case 4:
@@ -128,15 +125,75 @@ namespace ConsoleApp
                         {
                             Console.WriteLine(ex.Message);
                         }
+                        DisplayMenu();
                         break;
 
                     case 5:
-                        
+                        if (A == null || B == null || C == null)
+                        {
+                            Console.WriteLine("Матрицы не введены. Пожалуйста, выберите действие 1 для ввода матриц.");
+                            break;
+                        }
+
+                        int positiveEvenA = A.CountPositiveInEvenColumns();
+                        int positiveOddB = B.CountPositiveInOddColumns();
+
+                        Console.WriteLine($"\nКоличество положительных элементов в четных столбцах матрицы A: {positiveEvenA}");
+                        Console.WriteLine($"Количество положительных элементов в нечетных столбцах матрицы B: {positiveOddB}");
+
+                        double[] sumRows;
+
+                        if (positiveEvenA == positiveOddB)
+                        {
+                            double[] arrayB = (double[])B;
+                            double[] arrayA = (double[])A;
+
+                            sumRows = new double[A.Rows];
+                            for (int i = 0; i < A.Rows; i++)
+                            {
+                                double sumA = arrayA[i]; // Добавляем сумму строк матрицы A
+                                double sumB = arrayB[i]; // Добавляем сумму строк матрицы B
+                                sumRows[i] = sumA + sumB;
+                            }
+                        }
+                        else
+                        {
+                            sumRows = new double[C.Rows];
+                            for (int i = 0; i < C.Rows; i++)
+                            {
+                                double sum = 0;
+                                for (int j = 0; j < C.Columns; j++)
+                                {
+                                    sum += C[i, j];
+                                }
+                                sumRows[i] = sum;
+                            }
+                        }
+
+                        // Вывод массива сумм элементов строк
+                        Console.WriteLine("\nМассив сумм элементов строк:");
+                        foreach (var element in sumRows)
+                        {
+                            Console.Write($"{element} ");
+                        }
+                        DisplayMenu();
                         break;
                 }
 
                 Console.WriteLine();
             }
+        }
+
+        public static void DisplayMenu()
+        {
+            Console.WriteLine();
+            Console.WriteLine("---------------- Меню ----------------");
+            Console.WriteLine("1. Ввести матрицы");
+            Console.WriteLine("2. Подсчёт кол-во элементов больших чем 3.15");
+            Console.WriteLine("3. Подсчёт кол-во элементов больших чем число и крартных числу");
+            Console.WriteLine("4. Произведение матриц A*B и B*C");
+            Console.WriteLine("5. Сформировать массив сумм элементов строк");
+            Console.WriteLine("0. Выйти из программы");
         }
     }
 }
