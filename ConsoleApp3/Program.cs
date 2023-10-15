@@ -65,7 +65,12 @@ namespace ConsoleApp
                             Console.WriteLine("Матрицы не введены. Пожалуйста, выберите действие 1 для ввода матриц.");
                             break;
                         }
-
+                        Console.WriteLine("Введенная матрица A:");
+                        A.OutputMatrix();
+                        Console.WriteLine("Введенная матрица B:");
+                        B.OutputMatrix();
+                        Console.WriteLine("Введенная матрица C:");
+                        C.OutputMatrix();
                         int countA = A.CountGreaterThan(3.15);
                         int countB = B.CountGreaterThan(3.15);
                         int countC = C.CountGreaterThan(3.15);
@@ -91,6 +96,12 @@ namespace ConsoleApp
                         int countGreaterThanA = A.CountGreaterThanInColumns(number, multiple);
                         int countGreaterThanB = B.CountGreaterThanInColumns(number, multiple);
                         int countGreaterThanC = C.CountGreaterThanInColumns(number, multiple);
+                        Console.WriteLine("Введенная матрица A:");
+                        A.OutputMatrix();
+                        Console.WriteLine("Введенная матрица B:");
+                        B.OutputMatrix();
+                        Console.WriteLine("Введенная матрица C:");
+                        C.OutputMatrix();
                         Console.WriteLine($"Количество элементов матрицы A, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanA}");
                         Console.WriteLine($"Количество элементов матрицы B, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanB}");
                         Console.WriteLine($"Количество элементов матрицы C, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanC}");
@@ -98,20 +109,20 @@ namespace ConsoleApp
                         break;
 
                     case 4:
-                        if (B == null || C == null)
+                        if (A == null || B == null || C == null)
                         {
-                            Console.WriteLine("Матрицы B и C не введены. Пожалуйста, выберите действие 2 для ввода матриц.");
-                            break;
-                        }
-
-                        if (A == null || B == null)
-                        {
-                            Console.WriteLine("Матрицы A и B не введены. Пожалуйста, выберите действие 1 для ввода матриц.");
+                            Console.WriteLine("Матрицы A и B или C не введены. Пожалуйста, выберите действие 1 для ввода матриц.");
                             break;
                         }
 
                         try
                         {
+                            Console.WriteLine("Введенная матрица A:");
+                            A.OutputMatrix();
+                            Console.WriteLine("Введенная матрица B:");
+                            B.OutputMatrix();
+                            Console.WriteLine("Введенная матрица C:");
+                            C.OutputMatrix();
                             Matrix result1 = A * B;
                             Matrix result2 = B * C;
 
@@ -134,7 +145,12 @@ namespace ConsoleApp
                             Console.WriteLine("Матрицы не введены. Пожалуйста, выберите действие 1 для ввода матриц.");
                             break;
                         }
-
+                        Console.WriteLine("Введенная матрица A:");
+                        A.OutputMatrix();
+                        Console.WriteLine("Введенная матрица B:");
+                        B.OutputMatrix();
+                        Console.WriteLine("Введенная матрица C:");
+                        C.OutputMatrix();
                         int positiveEvenA = A.CountPositiveInEvenColumns();
                         int positiveOddB = B.CountPositiveInOddColumns();
 
@@ -187,13 +203,14 @@ namespace ConsoleApp
         public static void DisplayMenu()
         {
             Console.WriteLine();
-            Console.WriteLine("---------------- Меню ----------------");
+            Console.WriteLine("---------------------------- Меню ----------------------------");
             Console.WriteLine("1. Ввести матрицы");
             Console.WriteLine("2. Подсчёт кол-во элементов больших чем 3.15");
             Console.WriteLine("3. Подсчёт кол-во элементов больших чем число и крартных числу");
             Console.WriteLine("4. Произведение матриц A*B и B*C");
             Console.WriteLine("5. Сформировать массив сумм элементов строк");
             Console.WriteLine("0. Выйти из программы");
+            Console.WriteLine("--------------------------------------------------------------");
         }
     }
 }

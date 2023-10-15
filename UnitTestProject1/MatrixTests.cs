@@ -151,6 +151,37 @@ namespace UnitTestProject1
 
             Assert.AreEqual(0, count);
         }
+
+        [TestMethod]
+        public void MatrixMultiplication_DifferentDimensions_ThrowsException()
+        {
+            // Arrange
+            Matrix a = new Matrix(2, 3); // Создаем матрицу размером 2x3
+            Matrix b = new Matrix(4, 2); // Создаем матрицу размером 4x2
+
+            // Act & Assert
+            Assert.ThrowsException<Exception>(() => { Matrix result = a * b; }, "Невозможно выполнить умножение матриц");
+        }
+
+        [TestMethod]
+        public void MatrixToDoubleArrayConversion_ValidMatrix_ReturnsExpectedResult()
+        {
+            // Arrange
+            Matrix matrix = new Matrix(2, 3);
+            matrix[0, 0] = 1;
+            matrix[0, 1] = 2;
+            matrix[0, 2] = 3;
+            matrix[1, 0] = 4;
+            matrix[1, 1] = 5;
+            matrix[1, 2] = 6;
+
+            // Act
+            double[] result = (double[])matrix;
+
+            // Assert
+            double[] expected = { 6, 15 };
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }
 
