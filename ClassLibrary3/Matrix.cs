@@ -7,17 +7,17 @@ namespace ClassLibrary3
     /// </summary>
     public class Matrix
     {
-        private double[,] data;
+        private double[,] _data;
 
         /// <summary>
         /// Количество строк в матрице.
         /// </summary>
-        public int Rows { get { return data.GetLength(0); } }
+        public int Rows { get { return _data.GetLength(0); } }
 
         /// <summary>
         /// Количество столбцов в матрице.
         /// </summary>
-        public int Columns { get { return data.GetLength(1); } }
+        public int Columns { get { return _data.GetLength(1); } }
 
         /// <summary>
         /// Индексатор для доступа к элементам матрицы.
@@ -27,8 +27,8 @@ namespace ClassLibrary3
         /// <returns>Значение элемента матрицы.</returns>
         public double this[int i, int j]
         {
-            get { return data[i, j]; }
-            set { data[i, j] = value; }
+            get { return _data[i, j]; }
+            set { _data[i, j] = value; }
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace ClassLibrary3
         /// <param name="columns">Количество столбцов.</param>
         public Matrix(int rows, int columns)
         {
-            data = new double[rows, columns];
+            _data = new double[rows, columns];
         }
 
         /// <summary>
@@ -51,24 +51,26 @@ namespace ClassLibrary3
                 for (int j = 0; j < Columns; j++)
                 {
                     Console.Write($"Введите элемент [{i},{j}]: ");
-                    data[i, j] = Convert.ToDouble(Console.ReadLine());
+                    _data[i, j] = Convert.ToDouble(Console.ReadLine());
                 }
             }
         }
 
         /// <summary>
-        /// Выводит элементы матрицы на консоль.
-        /// </summary>
-        public void OutputMatrix()
+        // Переопределение метода ToString() для вывода матрицы
+        /// <summary>
+        public override string ToString()
         {
+            string matrixString = "";
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Columns; j++)
                 {
-                    Console.Write($"{data[i, j]} ");
+                    matrixString += $"{this[i, j]} ";
                 }
-                Console.WriteLine();
+                matrixString += "\n";
             }
+            return matrixString;
         }
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace ClassLibrary3
             {
                 for (int j = 0; j < Columns; j++)
                 {
-                    if (data[i, j] > number)
+                    if (_data[i, j] > number)
                     {
                         count++;
                     }
@@ -107,7 +109,7 @@ namespace ClassLibrary3
                 {
                     for (int i = 0; i < Rows; i++)
                     {
-                        if (data[i, j] > number)
+                        if (_data[i, j] > number)
                         {
                             count++;
                         }
@@ -151,7 +153,7 @@ namespace ClassLibrary3
         /// </summary>
         /// <param name="a">Матрица для преобразования.</param>
         /// <returns>Одномерный массив сумм элементов каждой строки матрицы.</returns>
-        public static explicit operator double[](Matrix a)
+        public static implicit operator double[](Matrix a)
         {
             double[] result = new double[a.Rows];
 
@@ -179,7 +181,7 @@ namespace ClassLibrary3
             {
                 for (int i = 0; i < Rows; i++)
                 {
-                    if (data[i, j] > 0)
+                    if (_data[i, j] > 0)
                     {
                         count++;
                     }
@@ -199,7 +201,7 @@ namespace ClassLibrary3
             {
                 for (int i = 0; i < Rows; i++)
                 {
-                    if (data[i, j] > 0)
+                    if (_data[i, j] > 0)
                     {
                         count++;
                     }
