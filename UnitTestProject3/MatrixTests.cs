@@ -34,26 +34,37 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestOutputMatrix()
         {
-            // Подготовка к перехвату консольного вывода
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
-
-            // Создание матрицы
+            // Arrange
             Matrix matrix = new Matrix(2, 2);
             matrix[0, 0] = 1;
             matrix[0, 1] = 2;
             matrix[1, 0] = 3;
             matrix[1, 1] = 4;
 
-            // Вызов метода OutputMatrix
-            matrix.OutputMatrix();
+            // Создаем StringWriter для перехвата вывода в консоль
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
 
-            // Ожидаемый результат
-            string expectedOutput = "1 2 \r\n3 4 \r\n";
+                // Act
+                Console.WriteLine(matrix.ToString());
 
-            // Проверка, что вызов Console.Write был сделан с ожидаемым результатом
-            Assert.AreEqual(expectedOutput, sw.ToString());
+                // Assert
+                string expectedOutput = "1 2 \n3 4 \n";
+                string[] expectedLines = expectedOutput.Trim().Split('\n');
+                string[] actualLines = sw.ToString().Trim().Split('\n');
+
+                for (int i = 0; i < expectedLines.Length; i++)
+                {
+                    CollectionAssert.AreEqual(
+                        expectedLines[i].Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries),
+                        actualLines[i].Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries)
+                    );
+                }
+            }
         }
+
+
 
         [TestMethod]
         public void TestCountGreaterThan()

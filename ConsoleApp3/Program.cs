@@ -7,14 +7,24 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            DisplayMenu();
-
             Matrix A = null;
             Matrix B = null;
             Matrix C = null;
 
             while (true)
             {
+                Console.Clear();
+
+                Console.WriteLine();
+                Console.WriteLine("|------------------------------ Меню ------------------------------|");
+                Console.WriteLine("|                         1. Ввод матриц                           |");
+                Console.WriteLine("|            2. Подсчёт кол-во элементов больших чем 3.15          |");
+                Console.WriteLine("|  3. Подсчёт кол-во элементов больших чем число и крартных числу  |");
+                Console.WriteLine("|                 4. Произведение матриц A*B и B*C                 |");
+                Console.WriteLine("|            5. Сформировать массив сумм элементов строк           |");
+                Console.WriteLine("|                       0. Выйти из программы                      |");
+                Console.WriteLine("-------------------------------------------------------------------|");
+
                 Console.Write("Введите номер действия: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -56,7 +66,10 @@ namespace ConsoleApp
                         Console.WriteLine("Матрица C успешно введена.");
                         Console.WriteLine("Введенная матрица C:");
                         Console.WriteLine(C);
-                        DisplayMenu();
+
+                        Console.WriteLine("Нажмите Enter для продолжения...");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
                     case 2:
@@ -77,7 +90,10 @@ namespace ConsoleApp
                         Console.WriteLine($"Количество элементов матрицы A, больших чем 3.15: {countA}");
                         Console.WriteLine($"Количество элементов матрицы B, больших чем 3.15: {countB}");
                         Console.WriteLine($"Количество элементов матрицы C, больших чем 3.15: {countC}");
-                        DisplayMenu();
+
+                        Console.WriteLine("Нажмите Enter для продолжения...");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
                     case 3:
@@ -105,7 +121,10 @@ namespace ConsoleApp
                         Console.WriteLine($"Количество элементов матрицы A, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanA}");
                         Console.WriteLine($"Количество элементов матрицы B, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanB}");
                         Console.WriteLine($"Количество элементов матрицы C, больших чем {number} и кратных {multiple}, в указанных столбцах: {countGreaterThanC}");
-                        DisplayMenu();
+
+                        Console.WriteLine("Нажмите Enter для продолжения...");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
                     case 4:
@@ -135,7 +154,10 @@ namespace ConsoleApp
                         {
                             Console.WriteLine(ex.Message);
                         }
-                        DisplayMenu();
+
+                        Console.WriteLine("Нажмите Enter для продолжения...");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
 
                     case 5:
@@ -191,25 +213,15 @@ namespace ConsoleApp
                         {
                             Console.Write($"{element} ");
                         }
-                        DisplayMenu();
+
+                        Console.WriteLine("Нажмите Enter для продолжения...");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
                 }
 
                 Console.WriteLine();
             }
-        }
-
-        public static void DisplayMenu()
-        {
-            Console.WriteLine();
-            Console.WriteLine("|------------------------------ Меню ------------------------------|");
-            Console.WriteLine("|                         1. Ввод матриц                           |");
-            Console.WriteLine("|            2. Подсчёт кол-во элементов больших чем 3.15          |");
-            Console.WriteLine("|  3. Подсчёт кол-во элементов больших чем число и крартных числу  |");
-            Console.WriteLine("|                 4. Произведение матриц A*B и B*C                 |");
-            Console.WriteLine("|            5. Сформировать массив сумм элементов строк           |");
-            Console.WriteLine("|                       0. Выйти из программы                      |");
-            Console.WriteLine("-------------------------------------------------------------------|");
         }
     }
 }
