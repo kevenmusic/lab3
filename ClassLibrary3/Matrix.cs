@@ -100,7 +100,7 @@ namespace ClassLibrary3
         /// <param name="number">Число, с которым сравниваются элементы матрицы.</param>
         /// <param name="multiple">Шаг для выбора столбцов.</param>
         /// <returns>Количество элементов матрицы, больших заданного числа, в указанных столбцах.</returns>
-        public int CountGreaterThanInColumns(double number, int multiple)
+        public int CountGreaterThan(double number, int multiple)
         {
             int count = 0;
             for (int j = 0; j < Columns; j++)

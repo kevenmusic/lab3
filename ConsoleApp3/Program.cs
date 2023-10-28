@@ -109,9 +109,9 @@ namespace ConsoleApp
                         Console.Write("Введите множитель для выбора столбцов: ");
                         int multiple = Convert.ToInt32(Console.ReadLine());
 
-                        int countGreaterThanA = A.CountGreaterThanInColumns(number, multiple);
-                        int countGreaterThanB = B.CountGreaterThanInColumns(number, multiple);
-                        int countGreaterThanC = C.CountGreaterThanInColumns(number, multiple);
+                        int countGreaterThanA = A.CountGreaterThan(number, multiple);
+                        int countGreaterThanB = B.CountGreaterThan(number, multiple);
+                        int countGreaterThanC = C.CountGreaterThan(number, multiple);
                         Console.WriteLine("Введенная матрица A:");
                         Console.WriteLine(A);
                         Console.WriteLine("Введенная матрица B:");

@@ -64,8 +64,6 @@ namespace UnitTestProject1
             }
         }
 
-
-
         [TestMethod]
         public void TestCountGreaterThan()
         {
@@ -89,7 +87,7 @@ namespace UnitTestProject1
             matrix[1, 0] = 3;
             matrix[1, 1] = 4;
 
-            int count = matrix.CountGreaterThanInColumns(3.15, 2);
+            int count = matrix.CountGreaterThan(3.15, 2);
 
             Assert.AreEqual(0, count);
         }
