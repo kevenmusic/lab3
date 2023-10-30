@@ -3,7 +3,7 @@ using System;
 
 namespace ConsoleApp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -38,7 +38,7 @@ namespace ConsoleApp
                         int columnsA = Convert.ToInt32(Console.ReadLine());
 
                         A = new Matrix(rowsA, columnsA);
-                        A.InputMatrix();
+                        InputMatrix(A);
                         Console.WriteLine("Матрица A успешно введена.");
                         Console.WriteLine("Введенная матрица A:");
                         Console.WriteLine(A);
@@ -50,7 +50,7 @@ namespace ConsoleApp
                         int columnsB = Convert.ToInt32(Console.ReadLine());
 
                         B = new Matrix(rowsB, columnsB);
-                        B.InputMatrix();
+                        InputMatrix(B);
                         Console.WriteLine("Матрица B успешно введена.");
                         Console.WriteLine("Введенная матрица B:");
                         Console.WriteLine(B);
@@ -62,7 +62,7 @@ namespace ConsoleApp
                         int columnsC = Convert.ToInt32(Console.ReadLine());
 
                         C = new Matrix(rowsC, columnsC);
-                        C.InputMatrix();
+                        InputMatrix(C);
                         Console.WriteLine("Матрица C успешно введена.");
                         Console.WriteLine("Введенная матрица C:");
                         Console.WriteLine(C);
@@ -182,8 +182,8 @@ namespace ConsoleApp
 
                         if (positiveEvenA == positiveOddB)
                         {
-                            double[] arrayB = (double[])B;
-                            double[] arrayA = (double[])A;
+                            double[] arrayB = B;
+                            double[] arrayA = A;
 
                             sumRows = new double[A.Rows];
                             for (int i = 0; i < A.Rows; i++)
@@ -221,6 +221,17 @@ namespace ConsoleApp
                 }
 
                 Console.WriteLine();
+            }
+        }
+        public static void InputMatrix(Matrix matrix)
+        {
+            for (int i = 0; i < matrix.Rows; i++)
+            {
+                for (int j = 0; j < matrix.Columns; j++)
+                {
+                    Console.Write($"Введите элемент [{i},{j}]: ");
+                    matrix[i, j] = Convert.ToDouble(Console.ReadLine());
+                }
             }
         }
     }

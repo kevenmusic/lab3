@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ClassLibrary3;
+using ConsoleApp;
 using System.IO;
 using System;
 
@@ -22,7 +23,7 @@ namespace UnitTestProject1
 
             // Вызов метода, который будет использовать Console.ReadLine() для ввода
             Matrix matrix = new Matrix(2, 2);
-            matrix.InputMatrix();
+            Program.InputMatrix(matrix);
 
             // Ожидаемый результат
             string expectedOutput = "Введите элемент [0,0]: Введите элемент [0,1]: Введите элемент [1,0]: Введите элемент [1,1]: ";

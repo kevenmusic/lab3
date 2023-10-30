@@ -60,6 +60,10 @@
       <Project>{38b5a66e-7bcd-4d07-998b-abf1f0238c6d}</Project>
       <Name>ClassLibrary3</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp3\ConsoleApp3.csproj">
+      <Project>{52dee693-0cd9-4fb1-bcf2-befd60db490d}</Project>
+      <Name>ConsoleApp3</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -42,21 +42,6 @@ namespace ClassLibrary3
         }
 
         /// <summary>
-        /// Вводит элементы матрицы с помощью пользовательского ввода.
-        /// </summary>
-        public void InputMatrix()
-        {
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Columns; j++)
-                {
-                    Console.Write($"Введите элемент [{i},{j}]: ");
-                    _data[i, j] = Convert.ToDouble(Console.ReadLine());
-                }
-            }
-        }
-
-        /// <summary>
         // Переопределение метода ToString() для вывода матрицы
         /// <summary>
         public override string ToString()
